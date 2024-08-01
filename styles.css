@@ -1,0 +1,162 @@
+/* Importing Google Fonts for Roboto and Roboto Mono */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
+
+/* Defining custom properties (CSS variables) for color scheme */
+:root{
+    --bgColor: #49243E; /* Background color */
+    --textPrimary: #fff; /* Primary text color */
+    --textSecondary: #BB8493; /* Secondary text color */
+    --primaryColor: #DBAFA0; /* Primary accent color */
+}
+
+/* Basic styling for the body */
+body{
+    font-family: 'Roboto', sans-serif; /* Setting the font family to Roboto */
+    background-color: var(--bgColor); /* Using the background color variable */
+    color: var(--textPrimary); /* Using the primary text color variable */
+    font-size: 1.4rem; /* Setting the base font size */
+}
+
+/* Styling for the main container */
+main{
+    width: 600px; /* Fixed width for the main container */
+    margin: 50px auto; /* Centering the main container with margin */
+}
+
+/* Styling for the main heading (h1) */
+h1{
+    color: var(--primaryColor); /* Using the primary accent color */
+}
+
+/* Styling for SVG icons within the h1 element */
+h1 svg{
+    width: 40px; /* Setting a fixed width for SVG icons */
+    fill: var(--primaryColor); /* Using the primary accent color for fill */
+}
+
+/* Grid layout for the header section */
+#header{
+    display: grid; /* Using CSS grid layout */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    margin: 20px 6px 30px; /* Margin around the header */
+}
+
+/* Right-aligned text for the buttons section */
+#buttons{
+    text-align: right; /* Aligning text to the right */
+}
+
+/* Styling for informational text */
+#info{
+    color: var(--primaryColor); /* Using the primary accent color */
+}
+
+/* Basic styling for buttons */
+button{
+    background: rgba(255,255,255,.2); /* Semi-transparent white background */
+    border: 0; /* No border */
+    color: rgba(255,255,255,.5); /* Semi-transparent white text */
+    padding: 5px 20px; /* Padding around the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Styling for the game container */
+div#game{
+    line-height: 35px; /* Line height */
+    height: 105px; /* Fixed height */
+    overflow: hidden; /* Hide overflow content */
+    position: relative; /* Position relative for absolute positioning inside */
+}
+
+/* Remove outline when the game container is focused */
+div#game:focus{
+    outline: 0; /* No outline */
+}
+
+/* Styling for the words container */
+#words{
+    filter: blur(5px); /* Blurred text */
+    color: var(--textSecondary); /* Using the secondary text color */
+}
+
+/* Remove blur when the game container is focused */
+#game:focus #words{
+    filter: blur(0); /* No blur */
+}
+
+/* Styling for focus error message */
+#focus-error {
+    position: absolute; /* Positioning the message absolutely */
+    inset: 0; /* Stretch to all sides */
+    text-align: center; /* Center the text */
+    padding-top: 35px; /* Padding from the top */
+}
+
+/* Hide focus error message when the game container is focused */
+#game:focus #focus-error{
+    display: none; /* Hide the error message */
+}
+
+/* Styling for individual word containers */
+div.word{
+    display: inline-block; /* Display words inline */
+    font-family: 'Roboto Mono', monospace; /* Monospace font for words */
+    margin: 0 5px; /* Margin between words */
+}
+
+/* Styling for correctly typed letters */
+.letter.correct{
+    color: #fff; /* White color for correct letters */
+}
+
+/* Styling for incorrectly typed letters */
+.letter.incorrect{
+    color: #f55; /* Red color for incorrect letters */
+}
+
+/* Keyframes for cursor blinking animation */
+@keyframes blink{
+    0%{
+        opacity: 1; /* Fully visible */
+    }
+    50%{
+        opacity: 0; /* Invisible */
+    }
+    100%{
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Styling for the blinking cursor */
+#cursor{
+    display: none; /* Hidden by default */
+    width: 2px; /* Thin cursor */
+    height: 1.6rem; /* Cursor height */
+    background: var(--primaryColor); /* Using the primary accent color */
+    position: fixed; /* Fixed positioning */
+    top: 198px; /* Position from the top */
+    left: 18px; /* Position from the left */
+    animation: blink .5s infinite; /* Blinking animation */
+}
+
+/* Show cursor when the game container is focused */
+#game:focus #cursor{
+    display: block; /* Display the cursor */
+}
+
+/* Styling for the game container when the game is over */
+#game.over #words{
+    opacity: .5; /* Reduced opacity */
+    filter: blur(0px); /* No blur */
+}
+
+/* Hide cursor when the game is over and focused */
+#game.over:focus #cursor{
+    display: none; /* Hide the cursor */
+}
+
+/* Hide focus error message when the game is over */
+#game.over #focus-error {
+    display: none; /* Hide the error message */
+}
